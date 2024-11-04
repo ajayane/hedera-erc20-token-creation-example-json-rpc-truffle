@@ -13,7 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "@openzeppelin/contracts": "^5.1.0",
-    "axios": "^0.27.2"
+    "axios": "^0.27.2",
+    "web3": "^4.14.0"
   },
   "devDependencies": {
     "@hashgraph/sdk": "^2.52.0",
