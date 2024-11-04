@@ -1,20 +1,15 @@
-const { Web3 } = require('web3');
+require("dotenv").config();
+const {Web3} = require('web3');
 const MyTokenABI = require("../build/contracts/TestERC20Token.json").abi;
-require("dotenv").config(); // For loading environment variables
+const web3 = new Web3(process.env.JSON_RPC_RELAY_URL); // Hedera Testnet RPC URL
+const tokenAddress = process.env.DEPLOYED_TOKEN_ADDRESS
+const myToken = new web3.eth.Contract(MyTokenABI, tokenAddress);
 
-// Set up Web3 with Hedera's RPC URL (Testnet in this example)
-const web3 = new Web3("https://testnet.hashio.io/api/"); // Hedera Testnet RPC URL
-
-// Define the token's deployed contract address and the holder's details
-const tokenAddress = "0x262fa3442381ff599f6cffe08a48886a31e17f8d"; // Replace with your token's contract address
 const holderPrivateKey = process.env.ETH_PRIVATE_KEY; // Set this in your .env file
-const holderAddress = "0x4cf2429328da1381ef5330e6c3ac52754c68a9bc"; // Replace with actual holder address
-
-// The recipient's address and the amount to transfer
+const holderAddress = process.env.CONTRACT_OWNER_ADDRESS // Replace with actual holder address
 const recipientAddress = "0xRecipientAddress"; // Replace with the recipient's address
 const transferAmount = web3.utils.toWei("10", "ether"); // Amount to transfer (10 tokens, for example)
 
-const myToken = new web3.eth.Contract(MyTokenABI, tokenAddress);
 
 async function transferTokens() {
     try {
@@ -25,7 +20,7 @@ async function transferTokens() {
 
         // Call the transfer function
         const tx = myToken.methods.transfer(recipientAddress, transferAmount);
-        const gas = await tx.estimateGas({ from: holderAddress });
+        const gas = await tx.estimateGas({from: holderAddress});
         const gasPrice = await web3.eth.getGasPrice();
         const data = tx.encodeABI();
         const txData = {
@@ -45,4 +40,6 @@ async function transferTokens() {
 }
 
 // Execute the transfer
-transferTokens();
+transferTokens().catch((error) => {
+    console.error("Error transferring tokens:", error);
+});

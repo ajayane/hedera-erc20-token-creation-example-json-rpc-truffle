@@ -20,3 +20,9 @@ vi .env
 ```bash
 truffle migrate
 ```
+
+## Run Script
+
+```bash
+node ./verify/<scriptName>.js
+```

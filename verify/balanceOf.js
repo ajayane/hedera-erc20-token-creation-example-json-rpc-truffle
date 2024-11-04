@@ -1,16 +1,13 @@
-// Import Web3 library and the ABI of the token contract
+require("dotenv").config();
 const { Web3 } = require('web3');
 const MyTokenABI = require("../build/contracts/TestERC20Token.json").abi;
+const web3 = new Web3( process.env.JSON_RPC_RELAY_URL); // Hedera Testnet RPC URL
+const tokenAddress = process.env.DEPLOYED_TOKEN_ADDRESS
+const myToken = new web3.eth.Contract(MyTokenABI, tokenAddress);
 
-// Set up Web3 with Hedera's RPC URL (Testnet in this example)
-const web3 = new Web3("https://testnet.hashio.io/api/"); // Hedera Testnet RPC URL
-
-// Define your token's deployed contract address and the recipient's address
-const tokenAddress = "0x262fa3442381ff599f6cffe08a48886a31e17f8d";
-const recipientAddress = "0x4cf2429328da1381ef5330e6c3ac52754c68a9bc";
+const recipientAddress = "0x4Cf2429328dA1381Ef5330E6c3aC52754C68A9bc";
 
 // Initialize the contract instance
-const myToken = new web3.eth.Contract(MyTokenABI, tokenAddress);
 
 async function checkBalance() {
   try {

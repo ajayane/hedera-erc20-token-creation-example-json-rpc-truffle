@@ -1,19 +1,11 @@
+require("dotenv").config();
 const { Web3 } = require('web3');
 const MyTokenABI = require("../build/contracts/TestERC20Token.json").abi;
-require("dotenv").config(); // Load environment variables
-
-// Set up Web3 connection
-const web3 = new Web3("https://testnet.hashio.io/api/"); // Hedera Testnet RPC URL
-
-// Your account's private key for signing the transaction
-const privateKey = process.env.ETH_PRIVATE_KEY;
-
-// Replace with your deployed contract address and recipient's address
-const tokenAddress = "0x262fa3442381ff599f6cffe08a48886a31e17f8d";
-const recipientAddress = "0x4cf2429328da1381ef5330e6c3ac52754c68a9bc";
-
-// Initialize the contract
+const web3 = new Web3( process.env.JSON_RPC_RELAY_URL); // Hedera Testnet RPC URL
+const tokenAddress = process.env.DEPLOYED_TOKEN_ADDRESS
 const myToken = new web3.eth.Contract(MyTokenABI, tokenAddress);
+
+const recipientAddress = "0x4cf2429328da1381ef5330e6c3ac52754c68a9bc";
 
 async function transferTokens() {
     // Define the amount (e.g., 100 tokens in the smallest unit)
