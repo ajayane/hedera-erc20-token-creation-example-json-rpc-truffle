@@ -1,0 +1,16 @@
+Info 0    [11:11:53.095] Starting TS Server
+Info 1    [11:11:53.098] Version: 5.4.3
+Info 2    [11:11:53.098] Arguments: /Users/ajayan.edayillam/.nvm/versions/node/v20.10.0/bin/node /Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/js-language-service.js -id=1731582711947 -debug-name=typescript --pluginProbeLocations /Applications/IntelliJ IDEA.app/Contents/plugins,/Users/ajayan.edayillam/work/hedera_erc20/hedera-erc20-token-creation-example-json-rpc-truffle,/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/typescript --globalPlugins tsc-ide-plugin --cancellationPipeName /private/var/folders/tk/cvz1kk2d6fj6tndhdlgvs9sc0000gp/T/tsServerCancellationPipes406/cmd*
+Info 3    [11:11:53.098] Platform: darwin NodeVersion: v20.10.0 CaseSensitive: false
+Info 4    [11:11:53.098] ServerMode: undefined hasUnknownServerMode: undefined
+Info 5    [11:11:53.104] Binding...
+Err 6     [11:11:53.106] Process: Require is used /Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external/
+Info 7    [11:11:53.106] event:
+    {
+      "seq": 0,
+      "type": "event",
+      "event": "typingsInstallerPid",
+      "body": {
+        "pid": 83109
+      }
+    }

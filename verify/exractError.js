@@ -1,0 +1,11 @@
+const {ethers} = require('ethers');
+
+
+const data = "0xfb8f41b20000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000038d7ea4c68000";
+const iface = new ethers.Interface(["function Error(string)"]);
+try{
+    const decoded = iface.parseError(data);
+    console.log(decoded);
+}catch (e) {
+    throw e
+}

@@ -5,7 +5,9 @@ const web3 = new Web3( process.env.JSON_RPC_RELAY_URL); // Hedera Testnet RPC UR
 const tokenAddress = process.env.DEPLOYED_TOKEN_ADDRESS
 const myToken = new web3.eth.Contract(MyTokenABI, tokenAddress);
 
-const recipientAddress = "0x0000000000000000000000000000000000429759";
+const recipientAddress = "0x000000000000000000000000000000000041e5f8";
+// const recipientAddress = "0x4Cf2429328dA1381Ef5330E6c3aC52754C68A9bc";
+// const recipientAddress = process.env.CONTRACT_OWNER_ADDRESS
 
 // Initialize the contract instance
 
